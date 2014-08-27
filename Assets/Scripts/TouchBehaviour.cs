@@ -14,11 +14,11 @@ public class TouchBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//foreach (var T in Input.touches) {
-		//	if(T.phase == TouchPhase.Moved){
-		//		transform.position = T.position;
-		//	}
-		//}
+		foreach (var T in Input.touches) {
+			if(T.phase == TouchPhase.Moved){
+				transform.position = T.position;
+			}
+		}
 	}
 
 	void OnCollisionEnter(Collision col){
@@ -27,7 +27,7 @@ public class TouchBehaviour : MonoBehaviour {
 			index++;
 		}
 		else{
-			//Damage
+			Application.LoadLevel("");
 		}
 	}
 }
