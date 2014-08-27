@@ -38,6 +38,8 @@ public class Randomize : MonoBehaviour {
 	private IEnumerator SimonSays () {
 		int l = 2;
 
+	Redo: //Ugly scripting is necessary
+		
 		for (int i = 0; i <= l; i++) {
 			points[i].gameObject.renderer.material.color = Color.green;
 
@@ -57,6 +59,8 @@ public class Randomize : MonoBehaviour {
 		}
 		
 		l++;
+
+		goto Redo; //Ugly scripting is necessary
 	}
 
 	private void CreatePoints () {
