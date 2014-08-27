@@ -113,6 +113,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 92d9f1cc25a08dd4b875c15de2ce4f32, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 92d9f1cc25a08dd4b875c15de2ce4f32, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 92d9f1cc25a08dd4b875c15de2ce4f32, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92d9f1cc25a08dd4b875c15de2ce4f32, type: 2}
   m_RootGameObject: {fileID: 1769000812}
@@ -219,7 +231,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 388870198}
   m_GameObject: {fileID: 1696474406}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
