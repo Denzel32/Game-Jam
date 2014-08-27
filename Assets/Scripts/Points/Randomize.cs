@@ -7,9 +7,10 @@ public class Randomize : MonoBehaviour {
 	//publics
 	public int levelCount = 7;
 	public int pointAmount = 10;
+	public static List<GameObject> points = new List<GameObject>();
 
 	//privates
-	public static List<GameObject> points = new List<GameObject>();
+	private PointScript pointscr;
 	private float[] coordinateX;
 	private float[] coordinateY;
 	
@@ -35,27 +36,27 @@ public class Randomize : MonoBehaviour {
 	}
 
 	private IEnumerator SimonSays () {
-		int l = 3;
+		int l = 2;
 
-		for (int i = 0; i < l; i++) {
+		for (int i = 0; i <= l; i++) {
 			points[i].gameObject.renderer.material.color = Color.green;
 
 			yield return new WaitForSeconds(0.5f);
 
 			points[i].gameObject.renderer.material.color = Color.gray;
 
-			if (l > pointAmount) {
-				l = 0;
-
-				/*for (int lvl = 0; lvl < levelCount; lvl++) {
-					Application.LoadLevel(lvl);
-				}*/
-			}
-
-			l++;
-
 			yield return new WaitForSeconds(1.5f);
 		}
+
+		if (l > pointAmount) {
+			l = 0;
+			
+			/*for (int lvl = 0; lvl < levelCount; lvl++) {
+					Application.LoadLevel(lvl);
+			}*/
+		}
+		
+		l++;
 	}
 
 	private void CreatePoints () {
@@ -77,7 +78,8 @@ public class Randomize : MonoBehaviour {
 					j = 0;
 				}
 			}
-			
+
+
 			point.transform.position = pos;
 			point.name = PointScript.pointName;
 			coordinateX[i] = pos.x;
