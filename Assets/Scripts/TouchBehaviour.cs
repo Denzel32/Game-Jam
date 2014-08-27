@@ -13,9 +13,10 @@ public class TouchBehaviour : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public void touchInput () {
 		foreach (var T in Input.touches) {
 			if(T.phase == TouchPhase.Moved){
+
 				transform.position = T.position;
 			}
 		}
@@ -27,7 +28,7 @@ public class TouchBehaviour : MonoBehaviour {
 			index++;
 		}
 		else{
-			Application.LoadLevel("");
+			Application.LoadLevel("Menuscreen");
 		}
 	}
 }
