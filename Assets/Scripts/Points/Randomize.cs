@@ -10,16 +10,19 @@ public class Randomize : MonoBehaviour {
 	public static List<GameObject> points = new List<GameObject>();
 
 	//privates
+	private int l = 2;
 	private PointScript pointscr;
 	private float[] coordinateX;
 	private float[] coordinateY;
 	
 	// Use this for initialization
 	void Start () {
+		Input.multiTouchEnabled = false;
+
 		CreatePoints();
 
 		StartCoroutine("SimonSays");
-		//StopCoroutine("SimonSays");
+		StopCoroutine("SimonSays");
 	}
 	
 	// Update is called once per frame
@@ -33,12 +36,14 @@ public class Randomize : MonoBehaviour {
 				}
 			}
 		}*/
+
+		if (Input.touches[0].phase == TouchPhase.Moved) {
+
+		}
 	}
 
 	private IEnumerator SimonSays () {
-		int l = 2;
-
-	Redo: //Ugly scripting is necessary
+	//Redo: //Ugly scripting is necessary
 		
 		for (int i = 0; i <= l; i++) {
 			points[i].gameObject.renderer.material.color = Color.green;
@@ -50,17 +55,19 @@ public class Randomize : MonoBehaviour {
 			yield return new WaitForSeconds(1.5f);
 		}
 
+		//touch input
+
 		if (l > pointAmount) {
 			l = 0;
 			
-			/*for (int lvl = 0; lvl < levelCount; lvl++) {
+			/*for (int lvl = 5; lvl < levelCount; lvl++) {
 					Application.LoadLevel(lvl);
 			}*/
 		}
 		
 		l++;
 
-		goto Redo; //Ugly scripting is necessary
+		//goto Redo; //Ugly scripting is necessary
 	}
 
 	private void CreatePoints () {
