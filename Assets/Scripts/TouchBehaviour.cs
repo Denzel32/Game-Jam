@@ -4,7 +4,7 @@ using System.Collections;
 public class TouchBehaviour : MonoBehaviour {
 
 	private Vector2 touch;
-	private float index;
+	private int index;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +22,7 @@ public class TouchBehaviour : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collider col){
-		if(col.GetComponent(PointScript.points[index] == col.gameObject)){
+		if(col.gameObject.GetComponent<PointScript>().index == index){
 			//Change Target
 			index++;
 		}
