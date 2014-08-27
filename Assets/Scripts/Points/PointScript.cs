@@ -4,6 +4,7 @@ using System.Collections;
 public class PointScript : MonoBehaviour {
 
 	public static string pointName = "Point";
+	public int indexNumber = 0;
 
 	// Use this for initialization
 	void Start () {

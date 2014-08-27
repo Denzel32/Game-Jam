@@ -21,8 +21,8 @@ public class TouchBehaviour : MonoBehaviour {
 		//}
 	}
 
-	void OnCollisionEnter(Collider col){
-		if(col.gameObject.GetComponent<PointScript>().index == index){
+	void OnCollisionEnter(Collision col){
+		if(col.transform.gameObject.GetComponent<PointScript>().indexNumber == index){
 			//Change Target
 			index++;
 		}
