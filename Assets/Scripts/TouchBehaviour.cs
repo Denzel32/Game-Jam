@@ -11,13 +11,11 @@ public class TouchBehaviour : MonoBehaviour {
 	private SoundPlayer soundPlayer;
 	private Randomize Randomize;
 	private int random;
-	private int points;
 	public bool complete;
 
 	// Use this for initialization
 	void Start () {
 		index = 0;
-		points = 0;
 		complete = false;
 		soundPlayer = gameObject.GetComponent<SoundPlayer>();
 		Randomize = GameObject.FindWithTag ("MainCamera").GetComponent<Randomize> ();
@@ -56,8 +54,6 @@ public class TouchBehaviour : MonoBehaviour {
 		}
 		else{
 			Application.LoadLevel("MenuScreen");
-			//Application.Quit();
 		}
-
 	}
 }
