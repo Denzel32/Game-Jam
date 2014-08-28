@@ -11,6 +11,7 @@ public class Randomize : MonoBehaviour {
 
 	//privates
 	private GameObject collisionPoint;
+	private Vector3 touchPos = new Vector3();
 	private bool touchEnabled = false;
 	private int l = 2;
 	private float[] coordinateX;
@@ -38,17 +39,21 @@ public class Randomize : MonoBehaviour {
 			}
 		}*/
 
-		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
-			collisionPoint = (GameObject)Instantiate(Resources.Load("Prefabs/CollisionPoint"), new Vector3(0, 0, 0), Quaternion.identity);
-		}
-		
-		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) {
-			Destroy(collisionPoint);
-
-			touchEnabled = false;
+		if (touchEnabled == true) {
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+				touchPos = Input.GetTouch(0).position;
+				
+				collisionPoint = (GameObject)Instantiate(Resources.Load("Prefabs/CollisionPoint"), Camera.main.ScreenToWorldPoint(touchPos), Quaternion.identity);
+			}
 			
-			StopCoroutine("SimonSays");
-			StartCoroutine("SimonSays");
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) {
+				Destroy(collisionPoint);
+				
+				touchEnabled = false;
+				
+				StopCoroutine("SimonSays");
+				StartCoroutine("SimonSays");
+			}
 		}
 	}
 
