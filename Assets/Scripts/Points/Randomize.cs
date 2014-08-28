@@ -8,12 +8,12 @@ public class Randomize : MonoBehaviour {
 	public int levelCount = 7;
 	public int pointAmount = 10;
 	public static List<GameObject> points = new List<GameObject>();
+	public static int l = 2;
 
 	//privates
 	private GameObject collisionPoint;
 	private Vector3 touchPos = new Vector3();
 	private bool touchEnabled = false;
-	private int l = 2;
 	private float[] coordinateX;
 	private float[] coordinateY;
 	
@@ -51,8 +51,7 @@ public class Randomize : MonoBehaviour {
 				
 				touchEnabled = false;
 				
-				StopCoroutine("SimonSays");
-				StartCoroutine("SimonSays");
+				//NextSet();
 			}
 		}
 	}
@@ -115,6 +114,11 @@ public class Randomize : MonoBehaviour {
 			
 			points.Add(point);
 		}
+	}
+
+	public static void NextSet () {
+		StopCoroutine("SimonSays");
+		StartCoroutine("SimonSays");
 	}
 
 	public static Vector2 UpdateLocation (float minX, float maxX, float minY, float maxY) {
