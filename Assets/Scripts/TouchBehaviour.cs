@@ -42,10 +42,16 @@ public class TouchBehaviour : MonoBehaviour {
 		if(col.transform.gameObject.GetComponent<PointScript>().indexNumber == index){
 			random = Random.Range(0,soundPlayer.Sounds.Count);
 			soundPlayer.playSound(random);
-			index++;
+			if(index == Randomize.l){
+				Randomize.NextSet();
+			}
+			else{
+				index++;
+			}
 		}
 		else{
 			Application.LoadLevel("Menuscreen");
 		}
+
 	}
 }
