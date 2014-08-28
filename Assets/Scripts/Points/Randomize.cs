@@ -116,7 +116,7 @@ public class Randomize : MonoBehaviour {
 		}
 	}
 
-	public static void NextSet () {
+	public void NextSet () {
 		StopCoroutine("SimonSays");
 		StartCoroutine("SimonSays");
 	}

@@ -12,11 +12,13 @@ public class TouchBehaviour : MonoBehaviour {
 	private Randomize Randomize;
 	private int random;
 	private int points;
+	public bool complete;
 
 	// Use this for initialization
 	void Start () {
 		index = 0;
 		points = 0;
+		complete = false;
 		soundPlayer = gameObject.GetComponent<SoundPlayer>();
 		Randomize = GameObject.FindWithTag ("MainCamera").GetComponent<Randomize> ();
 	}
@@ -40,12 +42,22 @@ public class TouchBehaviour : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if(col.transform.gameObject.GetComponent<PointScript>().indexNumber == index){
+			complete = false;
 			random = Random.Range(0,soundPlayer.Sounds.Count);
 			soundPlayer.playSound(random);
-			index++;
+			if(index == Randomize.l-1){
+				Randomize.NextSet();
+				index = 0;
+				complete = true;
+			}
+			else{
+				index++;
+			}
 		}
 		else{
-			Application.LoadLevel("Menuscreen");
+			Application.LoadLevel("MenuScreen");
+			//Application.Quit();
 		}
+
 	}
 }
