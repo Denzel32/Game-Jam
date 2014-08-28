@@ -10,8 +10,9 @@ public class Randomize : MonoBehaviour {
 	public static List<GameObject> points = new List<GameObject>();
 
 	//privates
+	private GameObject collisionPoint;
+	private bool touchEnabled = false;
 	private int l = 2;
-	private PointScript pointscr;
 	private float[] coordinateX;
 	private float[] coordinateY;
 	
@@ -22,7 +23,7 @@ public class Randomize : MonoBehaviour {
 		CreatePoints();
 
 		StartCoroutine("SimonSays");
-		StopCoroutine("SimonSays");
+		//StopCoroutine("SimonSays");
 	}
 	
 	// Update is called once per frame
@@ -37,8 +38,19 @@ public class Randomize : MonoBehaviour {
 			}
 		}*/
 
-		if (Input.touches[0].phase == TouchPhase.Moved) {
+		if (touchEnabled == true) {
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) {
+				collisionPoint = (GameObject)Instantiate(Resources.Load("Prefabs/CollisionPoint"), new Vector3(0, 0, 0), Quaternion.identity);
+			}
+			
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) {
+				Destroy(collisionPoint);
 
+				touchEnabled = false;
+				
+				StopCoroutine("SimonSays");
+				StartCoroutine("SimonSays");
+			}
 		}
 	}
 
@@ -48,11 +60,11 @@ public class Randomize : MonoBehaviour {
 		for (int i = 0; i <= l; i++) {
 			points[i].gameObject.renderer.material.color = Color.green;
 
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(1.5f);
 
 			points[i].gameObject.renderer.material.color = Color.gray;
 
-			yield return new WaitForSeconds(1.5f);
+			yield return new WaitForSeconds(0.5f);
 		}
 
 		//touch input
@@ -66,6 +78,7 @@ public class Randomize : MonoBehaviour {
 		}
 		
 		l++;
+		touchEnabled = true;
 
 		//goto Redo; //Ugly scripting is necessary
 	}
@@ -80,7 +93,8 @@ public class Randomize : MonoBehaviour {
 			//int k = 0;
 			
 			point = (GameObject)Instantiate(Resources.Load("Prefabs/Point"), pos, Quaternion.identity);
-			
+			point.GetComponent<PointScript>().indexNumber++;
+
 			for (int j = 0; j < pointAmount; ++j) {
 				if (coordinateX[j] <= pos.x + 1.0f && coordinateX[j] >= pos.x - 1.0f &&
 				    coordinateY[j] <= pos.y + 1.0f && coordinateY[j] >= pos.y - 1.0f) {
