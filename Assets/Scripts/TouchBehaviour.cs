@@ -16,11 +16,13 @@ public class TouchBehaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update(){
-		touch = Input.GetTouch (0).position;
-		touchX = touch.x / Screen.width * 100;
-		touchY = touch.y/Screen.height * 100;
-		Checkpos ();
-		gameObject.transform.position = position;
+		if (Input.touchCount > 0) {
+			touch = Input.GetTouch (0).position;
+			touchX = touch.x / Screen.width * 100;
+			touchY = touch.y / Screen.height * 100;
+			Checkpos ();
+			gameObject.transform.position = position;
+		}
 	}
 
 	void Checkpos(){

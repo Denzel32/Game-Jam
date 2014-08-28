@@ -8,4 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menuscreen.unity
   - enabled: 1
-    path: Assets/Scenes/TestScreen.unity
+    path: Assets/Scenes/GameScene2.unity
