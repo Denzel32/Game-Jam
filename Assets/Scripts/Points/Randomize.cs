@@ -38,19 +38,17 @@ public class Randomize : MonoBehaviour {
 			}
 		}*/
 
-		if (touchEnabled == true) {
-			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) {
-				collisionPoint = (GameObject)Instantiate(Resources.Load("Prefabs/CollisionPoint"), new Vector3(0, 0, 0), Quaternion.identity);
-			}
-			
-			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) {
-				Destroy(collisionPoint);
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+			collisionPoint = (GameObject)Instantiate(Resources.Load("Prefabs/CollisionPoint"), new Vector3(0, 0, 0), Quaternion.identity);
+		}
+		
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) {
+			Destroy(collisionPoint);
 
-				touchEnabled = false;
-				
-				StopCoroutine("SimonSays");
-				StartCoroutine("SimonSays");
-			}
+			touchEnabled = false;
+			
+			StopCoroutine("SimonSays");
+			StartCoroutine("SimonSays");
 		}
 	}
 
