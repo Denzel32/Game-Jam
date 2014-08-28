@@ -12,11 +12,13 @@ public class TouchBehaviour : MonoBehaviour {
 	private Randomize Randomize;
 	private int random;
 	private int points;
+	public bool complete;
 
 	// Use this for initialization
 	void Start () {
 		index = 0;
 		points = 0;
+		complete = false;
 		soundPlayer = gameObject.GetComponent<SoundPlayer>();
 		Randomize = GameObject.FindWithTag ("MainCamera").GetComponent<Randomize> ();
 	}
@@ -45,6 +47,7 @@ public class TouchBehaviour : MonoBehaviour {
 			if(index == Randomize.l-1){
 				Randomize.NextSet();
 				index = 0;
+				complete = true;
 			}
 			else{
 				index++;
