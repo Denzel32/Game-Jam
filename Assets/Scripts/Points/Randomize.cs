@@ -12,6 +12,7 @@ public class Randomize : MonoBehaviour {
 
 	//privates
 	private GameObject collisionPoint;
+	private GameObject glow;
 	private Vector3 touchPos = new Vector3();
 	private bool touchEnabled = false;
 	private float[] coordinateX;
@@ -60,11 +61,11 @@ public class Randomize : MonoBehaviour {
 	//Redo: //Ugly scripting is necessary
 		
 		for (int i = 0; i <= l; i++) {
-			points[i].gameObject.renderer.material.color = Color.green;
+			//points[i].gameObject.renderer.material.color = Color.green;
 
 			yield return new WaitForSeconds(1.5f);
 
-			points[i].gameObject.renderer.material.color = Color.gray;
+			//points[i].gameObject.renderer.material.color = Color.gray;
 
 			yield return new WaitForSeconds(0.5f);
 		}
