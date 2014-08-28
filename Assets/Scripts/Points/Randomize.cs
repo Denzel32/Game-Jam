@@ -10,12 +10,17 @@ public class Randomize : MonoBehaviour {
 	public static List<GameObject> points = new List<GameObject>();
 
 	//privates
-	private PointScript pointscr;
+	private GameObject collisionPoint;
+	private Vector3 touchPos = new Vector3();
+	private bool touchEnabled = false;
+	private int l = 2;
 	private float[] coordinateX;
 	private float[] coordinateY;
 	
 	// Use this for initialization
 	void Start () {
+		Input.multiTouchEnabled = false;
+
 		CreatePoints();
 
 		StartCoroutine("SimonSays");
@@ -33,30 +38,52 @@ public class Randomize : MonoBehaviour {
 				}
 			}
 		}*/
+
+		if (touchEnabled == true) {
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+				touchPos = Input.GetTouch(0).position;
+				
+				collisionPoint = (GameObject)Instantiate(Resources.Load("Prefabs/CollisionPoint"), Camera.main.ScreenToWorldPoint(touchPos), Quaternion.identity);
+			}
+			
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) {
+				Destroy(collisionPoint);
+				
+				touchEnabled = false;
+				
+				StopCoroutine("SimonSays");
+				StartCoroutine("SimonSays");
+			}
+		}
 	}
 
 	private IEnumerator SimonSays () {
-		int l = 2;
-
+	//Redo: //Ugly scripting is necessary
+		
 		for (int i = 0; i <= l; i++) {
 			points[i].gameObject.renderer.material.color = Color.green;
 
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(1.5f);
 
 			points[i].gameObject.renderer.material.color = Color.gray;
 
-			yield return new WaitForSeconds(1.5f);
+			yield return new WaitForSeconds(0.5f);
 		}
+
+		//touch input
 
 		if (l > pointAmount) {
 			l = 0;
 			
-			/*for (int lvl = 0; lvl < levelCount; lvl++) {
+			/*for (int lvl = 5; lvl < levelCount; lvl++) {
 					Application.LoadLevel(lvl);
 			}*/
 		}
 		
 		l++;
+		touchEnabled = true;
+
+		//goto Redo; //Ugly scripting is necessary
 	}
 
 	private void CreatePoints () {
@@ -69,7 +96,8 @@ public class Randomize : MonoBehaviour {
 			//int k = 0;
 			
 			point = (GameObject)Instantiate(Resources.Load("Prefabs/Point"), pos, Quaternion.identity);
-			
+			point.GetComponent<PointScript>().indexNumber = i;
+
 			for (int j = 0; j < pointAmount; ++j) {
 				if (coordinateX[j] <= pos.x + 1.0f && coordinateX[j] >= pos.x - 1.0f &&
 				    coordinateY[j] <= pos.y + 1.0f && coordinateY[j] >= pos.y - 1.0f) {

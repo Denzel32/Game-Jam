@@ -6,7 +6,7 @@ public class Buttons : MonoBehaviour {
 	void OnGUI () {
 
 		GUI.Box(new Rect(Screen.width*0.1f,Screen.height*0.1f,Screen.width*0.8f,Screen.height*0.8f),"Menu");
-
+		
 		if(GUI.Button(new Rect(Screen.width*0.2f,Screen.height*0.15f,Screen.width*0.6f,Screen.height*0.1f), "Start")) {
 			Application.LoadLevel(1);
 		}
