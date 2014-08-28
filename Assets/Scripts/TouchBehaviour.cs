@@ -8,27 +8,25 @@ public class TouchBehaviour : MonoBehaviour {
 	private int index;
 	private float touchX;
 	private float touchY;
-	public GUIText text;
 
 	// Use this for initialization
 	void Start () {
 		index = 0;
 	}
-	
+
 	// Update is called once per frame
 	void Update(){
 		touch = Input.GetTouch (0).position;
-		touchX = 100 /Screen.width * touch.x;
-		touchY = 100 /Screen.height *touch.y;
+		touchX = touch.x / Screen.width * 100;
+		touchY = touch.y/Screen.height * 100;
 		Checkpos ();
-		transform.position = position;
+		gameObject.transform.position = position;
 	}
 
 	void Checkpos(){
-		position.x = (5.6f*touchX) - 2.8f;
-		position.y = (10 * touchY)-5;
+		position.x = ((5.6f*touchX)/100) - 2.8f;
+		position.y = ((10 * touchY)/100)-5;
 		position.z = 3.7f;
-		text.text = "1= " + touchX + "2= " + touchY;
 		}
 
 	void OnCollisionEnter(Collision col){
