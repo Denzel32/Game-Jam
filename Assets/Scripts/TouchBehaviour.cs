@@ -42,6 +42,7 @@ public class TouchBehaviour : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if(col.transform.gameObject.GetComponent<PointScript>().indexNumber == index){
+			complete = false;
 			random = Random.Range(0,soundPlayer.Sounds.Count);
 			soundPlayer.playSound(random);
 			if(index == Randomize.l-1){
