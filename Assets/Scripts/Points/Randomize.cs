@@ -93,7 +93,7 @@ public class Randomize : MonoBehaviour {
 			//int k = 0;
 			
 			point = (GameObject)Instantiate(Resources.Load("Prefabs/Point"), pos, Quaternion.identity);
-			point.GetComponent<PointScript>().indexNumber++;
+			point.GetComponent<PointScript>().indexNumber = i;
 
 			for (int j = 0; j < pointAmount; ++j) {
 				if (coordinateX[j] <= pos.x + 1.0f && coordinateX[j] >= pos.x - 1.0f &&
