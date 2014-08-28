@@ -8,7 +8,7 @@ public class Buttons : MonoBehaviour {
 		GUI.Box(new Rect(110,10,100,180),"Menu");
 
 		if(GUI.Button(new Rect(120,40,80,20), "Start")) {
-			Application.LoadLevel("GameScene1");
+			Application.LoadLevel("Gamescene2");
 		}
 
 		if(GUI.Button(new Rect(120,70,80,20), "Options")) {
