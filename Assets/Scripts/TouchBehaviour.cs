@@ -9,12 +9,16 @@ public class TouchBehaviour : MonoBehaviour {
 	private float touchX;
 	private float touchY;
 	private SoundPlayer soundPlayer;
+	private Randomize Randomize;
 	private int random;
+	private int points;
 
 	// Use this for initialization
 	void Start () {
 		index = 0;
+		points = 0;
 		soundPlayer = gameObject.GetComponent<SoundPlayer>();
+		Randomize = GameObject.FindWithTag ("MainCamera").GetComponent<Randomize> ();
 	}
 
 	// Update is called once per frame
@@ -36,7 +40,6 @@ public class TouchBehaviour : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if(col.transform.gameObject.GetComponent<PointScript>().indexNumber == index){
-			//Change Target
 			random = Random.Range(0,soundPlayer.Sounds.Count);
 			soundPlayer.playSound(random);
 			index++;
