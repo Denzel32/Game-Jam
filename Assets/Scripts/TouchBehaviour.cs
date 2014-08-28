@@ -8,10 +8,13 @@ public class TouchBehaviour : MonoBehaviour {
 	private int index;
 	private float touchX;
 	private float touchY;
+	private SoundPlayer soundPlayer;
+	private int random;
 
 	// Use this for initialization
 	void Start () {
 		index = 0;
+		soundPlayer = gameObject.GetComponent<SoundPlayer>();
 	}
 
 	// Update is called once per frame
@@ -28,12 +31,14 @@ public class TouchBehaviour : MonoBehaviour {
 	void Checkpos(){
 		position.x = ((5.6f*touchX)/100) - 2.8f;
 		position.y = ((10 * touchY)/100)-5;
-		position.z = 3.7f;
+		position.z = 0;
 		}
 
 	void OnCollisionEnter(Collision col){
 		if(col.transform.gameObject.GetComponent<PointScript>().indexNumber == index){
 			//Change Target
+			random = Random.Range(0,soundPlayer.Sounds.Count);
+			soundPlayer.playSound(random);
 			index++;
 		}
 		else{
