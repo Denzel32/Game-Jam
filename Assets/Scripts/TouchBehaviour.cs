@@ -17,7 +17,7 @@ public class TouchBehaviour : MonoBehaviour {
 	void Start () {
 		index = 0;
 		complete = false;
-		soundPlayer = gameObject.GetComponent<SoundPlayer>();
+		soundPlayer = GameObject.FindWithTag ("MainCamera").GetComponent<SoundPlayer> ();
 		Randomize = GameObject.FindWithTag ("MainCamera").GetComponent<Randomize> ();
 	}
 
@@ -43,7 +43,7 @@ public class TouchBehaviour : MonoBehaviour {
 			complete = false;
 			random = Random.Range(0,soundPlayer.Sounds.Count);
 			soundPlayer.playSound(random);
-			if(index == Randomize.l-1){
+			if(Randomize.pointAmount == Randomize.l){
 				Randomize.NextSet();
 				index = 0;
 				complete = true;
@@ -53,7 +53,7 @@ public class TouchBehaviour : MonoBehaviour {
 			}
 		}
 		else{
-			Application.LoadLevel("MenuScreen");
+			Application.LoadLevel("GameOverScreen");
 		}
 	}
 }

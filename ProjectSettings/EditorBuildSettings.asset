@@ -8,8 +8,20 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menuscreen.unity
   - enabled: 1
-    path: Assets/Scenes/GameScene2.unity
-  - enabled: 1
     path: Assets/Scenes/Helpscreen.unity
   - enabled: 1
     path: Assets/Scenes/Creditscreen.unity
+  - enabled: 1
+    path: Assets/Scenes/prehistorc.unity
+  - enabled: 1
+    path: Assets/Scenes/mayan.unity
+  - enabled: 1
+    path: Assets/Scenes/egyptian.unity
+  - enabled: 1
+    path: Assets/Scenes/greek.unity
+  - enabled: 1
+    path: Assets/Scenes/present.unity
+  - enabled: 1
+    path: Assets/Scenes/future.unity
+  - enabled: 1
+    path: Assets/Scenes/Alien.unity

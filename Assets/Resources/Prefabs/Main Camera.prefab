@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571bdd8f00540ba44a6f6ebddd88d897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sounds: []
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,7 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCount: 7
-  pointAmount: 10
+  pointAmount: 5
+  AncorPoints: []
+  l: 2
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

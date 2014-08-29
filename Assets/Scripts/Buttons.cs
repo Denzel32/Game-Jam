@@ -5,13 +5,14 @@ public class Buttons : MonoBehaviour {
 
 	void OnGUI () {
 
-		GUI.Box(new Rect(Screen.width*0.1f,Screen.height*0.1f,Screen.width*0.8f,Screen.height*0.8f),"Menu");
+		GUI.color = Color.clear;
+		//GUI.Box(new Rect(Screen.width*0.1f,Screen.height*0.1f,Screen.width*0.8f,Screen.height*0.8f),"Menu");
 		
-		if(GUI.Button(new Rect(Screen.width*0.2f,Screen.height*0.15f,Screen.width*0.6f,Screen.height*0.1f), "Start")) {
-			Application.LoadLevel(1);
+		if(GUI.Button(new Rect(Screen.width*0.07f,Screen.height*0.58f,Screen.width*0.85f,Screen.height*0.1f), "")) {
+			Application.LoadLevel("prehistorc");
 		}
 
-		if(GUI.Button(new Rect(Screen.width*0.2f,Screen.height*0.275f,Screen.width*0.6f,Screen.height*0.1f), "Options")) {
+		/*if(GUI.Button(new Rect(Screen.width*0.2f,Screen.height*0.275f,Screen.width*0.6f,Screen.height*0.1f), "Options")) {
 			//Application.LoadLevel(1);
 		}
 
@@ -25,7 +26,7 @@ public class Buttons : MonoBehaviour {
 
 		if(GUI.Button(new Rect(Screen.width*0.2f,Screen.height*0.65f,Screen.width*0.6f,Screen.height*0.1f), "Exit")) {
 			Application.Quit();
-		}
+		}*/
 	
 	}
 }
